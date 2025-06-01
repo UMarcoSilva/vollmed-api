@@ -33,6 +33,7 @@ public class SecurityConfirgurations {
                 .authorizeHttpRequests((authorize) ->
                         authorize
                                 .requestMatchers("/login").permitAll()
+                                .requestMatchers("/v3/api-docs/**", "/swagger-ui.html" , "/swagger-ui/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(apiKeyFilter, UsernamePasswordAuthenticationFilter.class)
